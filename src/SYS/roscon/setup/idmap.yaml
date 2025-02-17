@@ -1,0 +1,14 @@
+idmap:
+  SeFR_M: 11
+  ThFR_SeFR: 12
+  ArFR_ThFR: 13
+  SeFL_M: 21
+  ThFL_SeFL: 22
+  ArFL_ThFL: 23
+  SeBR_M: 31
+  ThBR_SeBR: 32
+  ArBR_ThBR: 33
+  SeBL_M: 41
+  ThBL_SeBL: 42
+  ArBL_ThBL: 43
+

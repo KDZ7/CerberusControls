@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="CERBERUS">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="LegFR">
+        <chain base_link="M" tip_link="IMU2FR"/>
+    </group>
+    <group name="LegFL">
+        <chain base_link="M" tip_link="IMU2FL"/>
+    </group>
+    <group name="LegBR">
+        <chain base_link="M" tip_link="IMU2BR"/>
+    </group>
+    <group name="LegBL">
+        <chain base_link="M" tip_link="IMU2BL"/>
+    </group>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="FootFR" parent_link="IMU2FR" group="LegFR"/>
+    <end_effector name="FootFL" parent_link="IMU2FL" group="LegFL"/>
+    <end_effector name="FootBR" parent_link="IMU2BR" group="LegBR"/>
+    <end_effector name="FootBL" parent_link="IMU2BL" group="LegBL"/>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="M_World" type="floating" parent_frame="World" child_link="M"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="ArBL" link2="ArBR" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="ArFL" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="ArFR" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="CAMERA" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="IMU0C" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="IMU1BL" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="IMU1FL" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="IMU1FR" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="IMU2BL" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="ShBL" reason="Never"/>
+    <disable_collisions link1="ArBL" link2="ThBL" reason="Adjacent"/>
+    <disable_collisions link1="ArBL" link2="ThFR" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="ArFL" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="ArFR" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="CAMERA" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="IMU0C" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="IMU1BL" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="IMU1BR" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="IMU1FL" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="IMU1FR" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="IMU2BR" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="ShBR" reason="Never"/>
+    <disable_collisions link1="ArBR" link2="ThBR" reason="Adjacent"/>
+    <disable_collisions link1="ArBR" link2="ThFL" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="ArFR" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="IMU0C" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="IMU1BL" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="IMU1BR" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="IMU1FL" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="IMU1FR" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="IMU2FL" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="ShFL" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="ThBR" reason="Never"/>
+    <disable_collisions link1="ArFL" link2="ThFL" reason="Adjacent"/>
+    <disable_collisions link1="ArFR" link2="IMU0C" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="IMU1BL" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="IMU1BR" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="IMU1FL" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="IMU1FR" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="IMU2FR" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="ShFR" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="ThBL" reason="Never"/>
+    <disable_collisions link1="ArFR" link2="ThFR" reason="Adjacent"/>
+    <disable_collisions link1="BODY" link2="CAMERA" reason="Default"/>
+    <disable_collisions link1="BODY" link2="IMU0C" reason="Never"/>
+    <disable_collisions link1="BODY" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="BODY" link2="M" reason="Adjacent"/>
+    <disable_collisions link1="BODY" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="BODY" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="BODY" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="BODY" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="IMU0C" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="IMU1BL" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="IMU1BR" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="IMU2FL" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="IMU2FR" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="M" reason="Adjacent"/>
+    <disable_collisions link1="CAMERA" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="ThBL" reason="Never"/>
+    <disable_collisions link1="CAMERA" link2="ThBR" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="IMU1BL" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="IMU1BR" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="IMU1FL" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="IMU1FR" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="IMU2BL" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="IMU2BR" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="IMU2FL" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="IMU2FR" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="M" reason="Adjacent"/>
+    <disable_collisions link1="IMU0C" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="ThBL" reason="Never"/>
+    <disable_collisions link1="IMU0C" link2="ThBR" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="IMU1FL" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="IMU1FR" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="IMU2BL" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="ShBL" reason="Never"/>
+    <disable_collisions link1="IMU1BL" link2="ThBL" reason="Adjacent"/>
+    <disable_collisions link1="IMU1BL" link2="ThFR" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="IMU1FL" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="IMU1FR" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="IMU2BR" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="ShBR" reason="Never"/>
+    <disable_collisions link1="IMU1BR" link2="ThBR" reason="Adjacent"/>
+    <disable_collisions link1="IMU1BR" link2="ThFL" reason="Never"/>
+    <disable_collisions link1="IMU1FL" link2="IMU2FL" reason="Never"/>
+    <disable_collisions link1="IMU1FL" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="IMU1FL" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="IMU1FL" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="IMU1FL" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="IMU1FL" link2="ShFL" reason="Never"/>
+    <disable_collisions link1="IMU1FL" link2="ThBR" reason="Never"/>
+    <disable_collisions link1="IMU1FL" link2="ThFL" reason="Adjacent"/>
+    <disable_collisions link1="IMU1FR" link2="IMU2FR" reason="Never"/>
+    <disable_collisions link1="IMU1FR" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="IMU1FR" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="IMU1FR" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="IMU1FR" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="IMU1FR" link2="ShFR" reason="Never"/>
+    <disable_collisions link1="IMU1FR" link2="ThBL" reason="Never"/>
+    <disable_collisions link1="IMU1FR" link2="ThFR" reason="Adjacent"/>
+    <disable_collisions link1="IMU2BL" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="IMU2BL" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="IMU2BL" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="IMU2BL" link2="ShBL" reason="Adjacent"/>
+    <disable_collisions link1="IMU2BL" link2="ThBL" reason="Never"/>
+    <disable_collisions link1="IMU2BR" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="IMU2BR" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="IMU2BR" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="IMU2BR" link2="ShBR" reason="Adjacent"/>
+    <disable_collisions link1="IMU2BR" link2="ThBR" reason="Never"/>
+    <disable_collisions link1="IMU2FL" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="IMU2FL" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="IMU2FL" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="IMU2FL" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="IMU2FL" link2="ShFL" reason="Adjacent"/>
+    <disable_collisions link1="IMU2FL" link2="ThFL" reason="Never"/>
+    <disable_collisions link1="IMU2FR" link2="LIDAR" reason="Never"/>
+    <disable_collisions link1="IMU2FR" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="IMU2FR" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="IMU2FR" link2="ShFR" reason="Adjacent"/>
+    <disable_collisions link1="IMU2FR" link2="ThFR" reason="Never"/>
+    <disable_collisions link1="LIDAR" link2="M" reason="Adjacent"/>
+    <disable_collisions link1="LIDAR" link2="SeBL" reason="Never"/>
+    <disable_collisions link1="LIDAR" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="LIDAR" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="LIDAR" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="LIDAR" link2="ThBL" reason="Never"/>
+    <disable_collisions link1="LIDAR" link2="ThBR" reason="Never"/>
+    <disable_collisions link1="M" link2="SeBL" reason="Adjacent"/>
+    <disable_collisions link1="M" link2="SeBR" reason="Adjacent"/>
+    <disable_collisions link1="M" link2="SeFL" reason="Adjacent"/>
+    <disable_collisions link1="M" link2="SeFR" reason="Adjacent"/>
+    <disable_collisions link1="SeBL" link2="SeBR" reason="Never"/>
+    <disable_collisions link1="SeBL" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="SeBL" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="SeBL" link2="ShBL" reason="Never"/>
+    <disable_collisions link1="SeBL" link2="ShFL" reason="Never"/>
+    <disable_collisions link1="SeBL" link2="ThBL" reason="Adjacent"/>
+    <disable_collisions link1="SeBL" link2="ThFL" reason="Never"/>
+    <disable_collisions link1="SeBL" link2="ThFR" reason="Never"/>
+    <disable_collisions link1="SeBR" link2="SeFL" reason="Never"/>
+    <disable_collisions link1="SeBR" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="SeBR" link2="ShBR" reason="Never"/>
+    <disable_collisions link1="SeBR" link2="ShFR" reason="Never"/>
+    <disable_collisions link1="SeBR" link2="ThBR" reason="Adjacent"/>
+    <disable_collisions link1="SeBR" link2="ThFL" reason="Never"/>
+    <disable_collisions link1="SeBR" link2="ThFR" reason="Never"/>
+    <disable_collisions link1="SeFL" link2="SeFR" reason="Never"/>
+    <disable_collisions link1="SeFL" link2="ShBL" reason="Never"/>
+    <disable_collisions link1="SeFL" link2="ShFL" reason="Never"/>
+    <disable_collisions link1="SeFL" link2="ThBL" reason="Never"/>
+    <disable_collisions link1="SeFL" link2="ThBR" reason="Never"/>
+    <disable_collisions link1="SeFL" link2="ThFL" reason="Adjacent"/>
+    <disable_collisions link1="SeFR" link2="ShBR" reason="Never"/>
+    <disable_collisions link1="SeFR" link2="ShFR" reason="Never"/>
+    <disable_collisions link1="SeFR" link2="ThBL" reason="Never"/>
+    <disable_collisions link1="SeFR" link2="ThBR" reason="Never"/>
+    <disable_collisions link1="SeFR" link2="ThFR" reason="Adjacent"/>
+    <disable_collisions link1="ShBL" link2="ThBL" reason="Adjacent"/>
+    <disable_collisions link1="ShBR" link2="ThBR" reason="Adjacent"/>
+    <disable_collisions link1="ShFL" link2="ThFL" reason="Adjacent"/>
+    <disable_collisions link1="ShFR" link2="ThFR" reason="Adjacent"/>
+</robot>

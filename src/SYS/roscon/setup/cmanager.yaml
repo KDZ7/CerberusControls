@@ -1,0 +1,153 @@
+controller_manager:
+  ros__parameters:
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    IMU0C_sensor_broadcaster:
+      type: imu_sensor_broadcaster/IMUSensorBroadcaster
+    joint_group_position_controller:
+      type: position_controllers/JointGroupPositionController
+    csystem_controller:
+      type: csystem/Csystem
+    
+joint_state_broadcaster:
+  ros__parameters:
+    joints: 
+      - SeFR_M
+      - ThFR_SeFR
+      - ArFR_ThFR
+      # - ShFR_ThFR
+      - SeFL_M
+      - ThFL_SeFL
+      - ArFL_ThFL
+      # - ShFL_ThFL
+      - SeBR_M
+      - ThBR_SeBR
+      - ArBR_ThBR
+      # - ShBR_ThBR
+      - SeBL_M
+      - ThBL_SeBL
+      - ArBL_ThBL
+      # - ShBL_ThBL
+    state_interfaces: 
+      - position
+      - velocity
+
+IMU0C_sensor_broadcaster:
+  ros__parameters:
+    sensor_name: IMU0C
+    frame_id: IMU0C
+
+joint_group_position_controller:
+  ros__parameters:
+    joints: 
+      - SeFR_M
+      - ThFR_SeFR
+      - ArFR_ThFR
+      # - ShFR_ThFR
+      - SeFL_M
+      - ThFL_SeFL
+      - ArFL_ThFL
+      # - ShFL_ThFL
+      - SeBR_M
+      - ThBR_SeBR
+      - ArBR_ThBR
+      # - ShBR_ThBR
+      - SeBL_M
+      - ThBL_SeBL
+      - ArBL_ThBL
+      # - ShBL_ThBL
+  
+csystem_controller:
+  ros__parameters:
+    joints: 
+      - SeFR_M
+      - ThFR_SeFR
+      - ArFR_ThFR
+      # - ShFR_ThFR
+      - SeFL_M
+      - ThFL_SeFL
+      - ArFL_ThFL
+      # - ShFL_ThFL
+      - SeBR_M
+      - ThBR_SeBR
+      - ArBR_ThBR
+      # - ShBR_ThBR
+      - SeBL_M
+      - ThBL_SeBL
+      - ArBL_ThBL
+      # - ShBL_ThBL
+    SeFR_M:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0 
+    ThFR_SeFR:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    ArFR_ThFR:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    SeFL_M:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    ThFL_SeFL:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    ArFL_ThFL:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    SeBR_M:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    ThBR_SeBR:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    ArBR_ThBR:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    SeBL_M:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    ThBL_SeBL:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+    ArBL_ThBL:
+      interfaces: 
+        - position
+        - velocity
+      offsets: 
+        - 0.0
+          
+    state_topic: "/csystem/joint_states"
+    command_topic: "/csystem/joint_commands"
