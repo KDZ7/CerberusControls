@@ -1,0 +1,72 @@
+# This config file is used by ros2_control
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    LegFR_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    LegFL_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    LegBR_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    LegBL_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+LegFR_controller:
+  ros__parameters:
+    joints:
+      - SeFR_M
+      - ThFR_SeFR
+      - ShFR_ThFR
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    allow_nonzero_velocity_at_trajectory_end: true
+LegFL_controller:
+  ros__parameters:
+    joints:
+      - SeFL_M
+      - ThFL_SeFL
+      - ShFL_ThFL
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    allow_nonzero_velocity_at_trajectory_end: true
+LegBR_controller:
+  ros__parameters:
+    joints:
+      - SeBR_M
+      - ThBR_SeBR
+      - ShBR_ThBR
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    allow_nonzero_velocity_at_trajectory_end: true
+LegBL_controller:
+  ros__parameters:
+    joints:
+      - SeBL_M
+      - ThBL_SeBL
+      - ShBL_ThBL
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    allow_nonzero_velocity_at_trajectory_end: true

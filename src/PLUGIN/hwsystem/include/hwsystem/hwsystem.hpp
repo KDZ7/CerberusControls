@@ -1,0 +1,45 @@
+#ifndef __HWSYSTEM_HPP__
+#define __HWSYSTEM_HPP__
+
+#include "rclcpp/rclcpp.hpp"
+#include "hardware_interface/system_interface.hpp"
+#include "hwsystem/visibility_control.h"
+#include "realtime_tools/realtime_buffer.hpp"
+#include "idevice/idevice.hpp"
+
+namespace hwsystem
+{
+
+  using CallbackReturn = rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn;
+  class Hwsystem : public hardware_interface::SystemInterface
+  {
+  public:
+    CallbackReturn on_init(const hardware_interface::HardwareInfo &info) override;
+    CallbackReturn on_configure(const rclcpp_lifecycle::State &previous_state) override;
+    CallbackReturn on_activate(const rclcpp_lifecycle::State &previous_state) override;
+    CallbackReturn on_deactivate(const rclcpp_lifecycle::State &previous_state) override;
+    CallbackReturn on_cleanup(const rclcpp_lifecycle::State &previous_state) override;
+    CallbackReturn on_error(const rclcpp_lifecycle::State &previous_state) override;
+    CallbackReturn on_shutdown(const rclcpp_lifecycle::State &previous_state) override;
+
+    hardware_interface::return_type read(const rclcpp::Time &time, const rclcpp::Duration &period) override;
+    hardware_interface::return_type write(const rclcpp::Time &time, const rclcpp::Duration &period) override;
+
+    std::vector<hardware_interface::StateInterface::ConstSharedPtr> on_export_state_interfaces() override;
+    std::vector<hardware_interface::CommandInterface::SharedPtr> on_export_command_interfaces() override;
+
+  private:
+    std::unordered_map<std::string, double> joint_state_positions_;
+    std::unordered_map<std::string, double> joint_command_positions_;
+    std::unordered_map<std::string, double> joint_command_velocities_;
+
+    struct rt_buffer_
+    {
+      std::unordered_map<std::string, double> joint_command_positions_;
+      std::unordered_map<std::string, double> joint_command_velocities_;
+    };
+  };
+
+} // namespace hwsystem
+
+#endif // __HWSYSTEM_HPP__

@@ -1,0 +1,35 @@
+# MoveIt uses this configuration for controller management
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - LegFR_controller
+    - LegFL_controller
+    - LegBR_controller
+    - LegBL_controller
+
+  LegFR_controller:
+    type: FollowJointTrajectory
+    joints:
+      - SeFR_M
+      - ThFR_SeFR
+      - ShFR_ThFR
+  LegFL_controller:
+    type: FollowJointTrajectory
+    joints:
+      - SeFL_M
+      - ThFL_SeFL
+      - ShFL_ThFL
+  LegBR_controller:
+    type: FollowJointTrajectory
+    joints:
+      - SeBR_M
+      - ThBR_SeBR
+      - ShBR_ThBR
+  LegBL_controller:
+    type: FollowJointTrajectory
+    joints:
+      - SeBL_M
+      - ThBL_SeBL
+      - ShBL_ThBL
