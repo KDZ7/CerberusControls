@@ -1,0 +1,15 @@
+# Default initial positions for CERBERUS's ros2_control fake system
+
+initial_positions:
+  SeBL_M: 0
+  SeBR_M: 0
+  SeFL_M: 0
+  SeFR_M: 0
+  ShBL_ThBL: 0
+  ShBR_ThBR: 0
+  ShFL_ThFL: 0
+  ShFR_ThFR: 0
+  ThBL_SeBL: 0
+  ThBR_SeBR: 0
+  ThFL_SeFL: 0
+  ThFR_SeFR: 0
