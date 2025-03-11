@@ -1,0 +1,104 @@
+groups:
+  LegFR:
+    base_link: 
+      - M
+    end_link:
+      - IMU2FR
+    joints: 
+      - SeFR_M
+      - ThFR_SeFR
+      - ShFR_ThFR
+    limits:
+      SeFR_M:
+        min: -2.09
+        max: 2.09
+      ThFR_SeFR:
+        min: -2.09
+        max: 2.09
+      ShFR_ThFR:
+        min: -2.09
+        max: 2.09
+    lengths: 
+      - 0.02355
+      - 0.18111
+      - 0.17912
+
+  LegFL:
+    base_link: 
+      - M
+    end_link:
+      - IMU2FL
+    joints:
+      - SeFL_M
+      - ThFL_SeFL
+      - ShFL_ThFL
+    limits:
+      SeFL_M:
+        min: -2.09
+        max: 2.09
+      ThFL_SeFL:
+        min: -2.09
+        max: 2.09
+      ShFL_ThFL:
+        min: -2.09
+        max: 2.09
+    lengths: 
+      - 0.02355
+      - 0.18111
+      - 0.17912
+
+  LegBR:
+    base_link: 
+      - M
+    end_link:
+      - IMU2BR
+    joints:
+      - SeBR_M
+      - ThBR_SeBR
+      - ShBR_ThBR
+    limits:
+      SeBR_M:
+        min: -2.09
+        max: 2.09
+      ThBR_SeBR:
+        min: -2.09
+        max: 2.09
+      ShBR_ThBR:
+        min: -2.09
+        max: 2.09
+    lengths: 
+      - 0.02355
+      - 0.18111
+      - 0.17912
+
+  LegBL:
+    base_link: 
+      - M
+    end_link:
+      - IMU2BL
+    joints:
+      - SeBL_M
+      - ThBL_SeBL
+      - ShBL_ThBL
+    limits:
+      SeBL_M:
+        min: -2.09
+        max: 2.09
+      ThBL_SeBL:
+        min: -2.09
+        max: 2.09
+      ShBL_ThBL:
+        min: -2.09
+        max: 2.09
+    lengths:
+      - 0.02355
+      - 0.18111
+      - 0.17912
+      
+solvers:
+  grid:
+    max_iter: 1000
+    delta: 1e-2
+    radius: 5e-1
+    enable_refinement: true
+    random_seed: -1 # (-1: time) | (n: predictable seed) 

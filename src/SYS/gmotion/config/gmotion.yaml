@@ -1,0 +1,255 @@
+gaits:
+  stand:
+    - sync: [LegFL, LegFR, LegBL, LegBR]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+
+  sit:
+    - sync: [LegFL, LegFR, LegBL, LegBR]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+
+  crawl:
+    - sync: [LegFR]
+      step:
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.5}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.10, wait: 0.5}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.5}
+    - sync: [LegFL]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.10, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+    - sync: [LegBR]
+      step:
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.10, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+    - sync: [LegBL]
+      step:
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.10, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+    - goto: walk
+
+  walk:
+    - sync: [LegFL, LegBR]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+    - sync: [LegFR, LegBL]
+      step:
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1} 
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+    - goto: walk
+
+  trot:
+    - sync: [LegFR, LegBL]
+      step:
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+    - sync: [LegFL, LegBR]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+    - goto: trot
+
+  bound:
+    - sync: [LegFL, LegFR]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+    - sync: [LegBL, LegBR]
+      step:
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+    - goto: bound
+
+  gallop:
+    - sync: [LegFL, LegFR]
+      step:
+        - {leg: LegFL, x: 0.18, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.19, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.10, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.18, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.19, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.10, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+    - sync: [LegBL, LegBR]
+      step:
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.08, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.05, y: 0.15, z: -0.10, wait: 0.1}
+        - {leg: LegBL, x: -0.05, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.05, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.08, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.05, y: -0.15, z: -0.10, wait: 0.1}
+        - {leg: LegBR, x: -0.05, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.05, y: -0.15, z: -0.23, wait: 0.1}
+    - goto: gallop
+
+  ramp:
+    - sync: [LegFR, LegBL]
+      step:
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+    - sync: [LegFL, LegBR]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+    - goto: ramp
+
+  turn_yaw:
+    - sync: [LegFR, LegBL]
+      step:
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1} 
+        - {leg: LegFR, x: 0.2, y: -0.13, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.13, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+    - sync: [LegFL, LegBR]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.18, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.08, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+    - goto: turn_yaw
+
+  side_right:
+    - sync: [LegFR, LegBR]
+      step:
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.13, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.13, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+    - sync: [LegFL, LegBL]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.13, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.13, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+    - goto: side_right
+
+  side_left:
+    - sync: [LegFR, LegBR]
+      step:
+        - {leg: LegFR, x: 0.2, y: -0.13, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.13, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.13, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.13, z: -0.23, wait: 0.1}
+    - sync: [LegFL, LegBL]
+      step:
+        - {leg: LegFL, x: 0.2, y: 0.13, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.13, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.13, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.13, z: -0.23, wait: 0.1}
+    - goto: side_left
+
+  backward:
+    - sync: [LegFL, LegBR]
+      step:
+        - {leg: LegFL, x: 0.18, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.18, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFL, x: 0.16, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.08, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBR, x: -0.08, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.23, wait: 0.1}
+    - sync: [LegFR, LegBL]
+      step:
+        - {leg: LegFR, x: 0.18, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.18, y: -0.15, z: -0.15, wait: 0.1}
+        - {leg: LegFR, x: 0.16, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.08, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegBL, x: -0.08, y: 0.15, z: -0.15, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.23, wait: 0.1}
+    - goto: backward
+
+  sniff:
+    - sync: [LegFL, LegFR]
+      step:
+        - {leg: LegFL, x: 0.18, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.2, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFL, x: 0.18, y: 0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.18, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.2, y: -0.15, z: -0.23, wait: 0.1}
+        - {leg: LegFR, x: 0.18, y: -0.15, z: -0.23, wait: 0.1}
+    - sync: [LegBL, LegBR]
+      step:
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.20, wait: 0.1}
+        - {leg: LegBL, x: -0.08, y: 0.15, z: -0.20, wait: 0.1}
+        - {leg: LegBL, x: -0.1, y: 0.15, z: -0.20, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.20, wait: 0.1}
+        - {leg: LegBR, x: -0.08, y: -0.15, z: -0.20, wait: 0.1}
+        - {leg: LegBR, x: -0.1, y: -0.15, z: -0.20, wait: 0.1}
+    - goto: sniff
+
+solver: GRID
