@@ -1,0 +1,29 @@
+ros_domain_id: 0
+namespace: Null
+pkg_robot_description: "cerberus_v1"
+robot_description: "description/cerberus.urdf.xacro"
+display_on: "rviz" # rviz/gazebo/both
+use_sim_time: false
+joint_state_publisher: true
+
+controller_manager:
+  use: false
+  setup_path: Null
+  use_sim_time: false
+  update_rate: 100
+
+rviz:
+  config_path: "[display]/config/rviz.yaml"
+
+gazebo:
+  mode: "both" # server/client/both
+  world: "warehouse.sdf"
+  robot_name: "CERBERUS_V1"
+  robot_position: [0, 0, 0, 0, 0, 0]
+  gzbridge_path: Null
+  autorun: false
+
+environment:
+  res_paths: "[gzmodel]/models/sdf/:[cerberus_v1]/.."
+  plug_paths: ""
+  lib_paths: ""
