@@ -9,17 +9,17 @@ Stephen Brawner (brawner@gmail.com)
     name="M">
     <inertial>
       <origin
-        xyz="-9.0291E-05 9.2778E-05 0.010762"
+        xyz="-0.00013997 0.00012538 0.013885"
         rpy="0 0 0" />
       <mass
-        value="0.25379" />
+        value="0.26104" />
       <inertia
-        ixx="0.00046838"
-        ixy="-2.5063E-08"
-        ixz="2.5068E-08"
-        iyy="0.0013827"
-        iyz="-3.9138E-08"
-        izz="0.0018298" />
+        ixx="0.00040065"
+        ixy="-3.5505E-08"
+        ixz="8.1973E-08"
+        iyy="0.0011658"
+        iyz="-5.4402E-08"
+        izz="0.0015373" />
     </inertial>
     <visual>
       <origin
@@ -32,9 +32,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.50196 0.50196 0.50196 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalSteelDark.jpg" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -54,14 +52,14 @@ Stephen Brawner (brawner@gmail.com)
         xyz="-0.034085 4.3078E-06 0.067864"
         rpy="0 0 0" />
       <mass
-        value="1.0157" />
+        value="0.88698" />
       <inertia
-        ixx="0.0082261"
-        ixy="6.9016E-09"
-        ixz="-0.00062026"
-        iyy="0.0053807"
-        iyz="-9.4574E-08"
-        izz="0.0096179" />
+        ixx="0.0071834"
+        ixy="6.0268E-09"
+        ixz="-0.00054163"
+        iyy="0.0046986"
+        iyz="-8.2586E-08"
+        izz="0.0083988" />
     </inertial>
     <visual>
       <origin
@@ -74,9 +72,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="1 0 1 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/PlasticGray.jpg" />
+          rgba="0.5451 0.61569 0.85882 1" />
       </material>
     </visual>
     <collision>
@@ -106,17 +102,17 @@ Stephen Brawner (brawner@gmail.com)
     name="CAMERA">
     <inertial>
       <origin
-        xyz="-0.026968 -8.3225E-06 -0.016758"
+        xyz="-0.02622 -8.6647E-06 -0.015032"
         rpy="0 0 0" />
       <mass
-        value="0.29652" />
+        value="0.30222" />
       <inertia
-        ixx="0.00045957"
-        ixy="4.4891E-08"
-        ixz="-1.0134E-05"
-        iyy="0.00013644"
-        iyz="-1.4486E-09"
-        izz="0.0005175" />
+        ixx="0.00048121"
+        ixy="4.8053E-08"
+        ixz="-8.8179E-06"
+        iyy="0.00012834"
+        iyz="-8.6714E-10"
+        izz="0.00053556" />
     </inertial>
     <visual>
       <origin
@@ -129,9 +125,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.10196 0.10196 0.10196 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.25098 0.25098 0.25098 1" />
       </material>
     </visual>
     <collision>
@@ -161,17 +155,17 @@ Stephen Brawner (brawner@gmail.com)
     name="LIDAR">
     <inertial>
       <origin
-        xyz="0.0021649 0.00030541 -0.0028881"
+        xyz="0.0019924 0.00034039 -0.0014487"
         rpy="0 0 0" />
       <mass
-        value="0.10467" />
+        value="0.10143" />
       <inertia
-        ixx="0.00011985"
-        ixy="-2.5264E-08"
-        ixz="9.903E-09"
-        iyy="7.902E-05"
-        iyz="4.2071E-08"
-        izz="0.0001916" />
+        ixx="0.00010664"
+        ixy="-3.0202E-08"
+        ixz="1.0682E-08"
+        iyy="7.1321E-05"
+        iyz="4.5081E-08"
+        izz="0.00017021" />
     </inertial>
     <visual>
       <origin
@@ -184,9 +178,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.25098 0.25098 0.25098 1" />
       </material>
     </visual>
     <collision>
@@ -216,7 +208,7 @@ Stephen Brawner (brawner@gmail.com)
     name="IMU0C">
     <inertial>
       <origin
-        xyz="-1.3878E-17 8.6896E-20 0.0015"
+        xyz="-1.3878E-17 1.402E-19 0.0015"
         rpy="0 0 0" />
       <mass
         value="0.0009" />
@@ -269,17 +261,17 @@ Stephen Brawner (brawner@gmail.com)
     name="SeFR">
     <inertial>
       <origin
-        xyz="0.00022279 0.00033706 0.023497"
+        xyz="0.00039965 -0.00024478 0.025144"
         rpy="0 0 0" />
       <mass
-        value="0.029079" />
+        value="0.037021" />
       <inertia
-        ixx="3.9251E-06"
-        ixy="6.5626E-09"
-        ixz="-9.8203E-09"
-        iyy="4.0186E-06"
-        iyz="-6.2671E-09"
-        izz="2.6804E-06" />
+        ixx="5.4169E-06"
+        ixy="-9.1221E-09"
+        ixz="-2.0494E-08"
+        iyy="5.0821E-06"
+        iyz="1.3847E-08"
+        izz="3.2296E-06" />
     </inertial>
     <visual>
       <origin
@@ -293,8 +285,6 @@ Stephen Brawner (brawner@gmail.com)
         name="">
         <color
           rgba="0.89804 0.91765 0.92941 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalSteelDark.jpg" />
       </material>
     </visual>
     <collision>
@@ -312,21 +302,21 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="0.1446 -0.095 0.044"
-      rpy="3.1416 1.5707 3.1416" />
+      rpy="1.5708 0 1.5708" />
     <parent
       link="M" />
     <child
       link="SeFR" />
     <axis
-      xyz="0.00011373 0 -1" />
+      xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
@@ -336,17 +326,17 @@ Stephen Brawner (brawner@gmail.com)
     name="ThFR">
     <inertial>
       <origin
-        xyz="0.065617 -0.006527 0.024512"
+        xyz="0.065249 -0.0067576 0.024445"
         rpy="0 0 0" />
       <mass
-        value="0.24964" />
+        value="0.2297" />
       <inertia
-        ixx="5.1153E-05"
-        ixy="2.3468E-05"
-        ixz="-5.2194E-06"
-        iyy="0.00072109"
-        iyz="-7.7661E-07"
-        izz="0.00073416" />
+        ixx="4.5425E-05"
+        ixy="2.0512E-05"
+        ixz="-4.5527E-06"
+        iyy="0.00063156"
+        iyz="-6.7477E-07"
+        izz="0.00064269" />
     </inertial>
     <visual>
       <origin
@@ -359,9 +349,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.62745 0.62745 0.62745 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -378,8 +366,8 @@ Stephen Brawner (brawner@gmail.com)
     name="ThFR_SeFR"
     type="revolute">
     <origin
-      xyz="2.2896E-05 -0.0144 0.045901"
-      rpy="1.5708 0.70743 0" />
+      xyz="-0.0144 -2.8116E-05 0.045901"
+      rpy="1.5708 1.35 -1.5708" />
     <parent
       link="SeFR" />
     <child
@@ -387,13 +375,13 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
@@ -403,16 +391,16 @@ Stephen Brawner (brawner@gmail.com)
     name="ArFR">
     <inertial>
       <origin
-        xyz="2.7735E-05 -0.007627 0.0033028"
+        xyz="-2.7735E-05 0.007627 0.0033028"
         rpy="0 0 0" />
       <mass
         value="0.0030347" />
       <inertia
         ixx="2.989E-07"
         ixy="4.865E-09"
-        ixz="-2.5487E-11"
+        ixz="2.5487E-11"
         iyy="4.3267E-08"
-        iyz="5.0977E-09"
+        iyz="-5.0977E-09"
         izz="3.2577E-07" />
     </inertial>
     <visual>
@@ -427,8 +415,6 @@ Stephen Brawner (brawner@gmail.com)
         name="">
         <color
           rgba="0.89804 0.91765 0.92941 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalSteelDark.jpg" />
       </material>
     </visual>
     <collision>
@@ -446,7 +432,7 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="0.050268 -0.027324 0.025223"
-      rpy="-1.5708 0 3.1416" />
+      rpy="1.5708 0.71 0" />
     <parent
       link="ThFR" />
     <child
@@ -454,16 +440,16 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-1.5708"
+      upper="0.20944"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
-      soft_upper_limit="0.7"
-      soft_lower_limit="-0.7"
+      soft_upper_limit="0.2"
+      soft_lower_limit="-1.5"
       k_velocity="0" />
   </joint>
   <link
@@ -523,17 +509,17 @@ Stephen Brawner (brawner@gmail.com)
     name="ShFR">
     <inertial>
       <origin
-        xyz="-0.065758 -0.007629 0.014842"
+        xyz="-0.067367 -0.0073554 0.014841"
         rpy="0 0 0" />
       <mass
-        value="0.10028" />
+        value="0.088995" />
       <inertia
-        ixx="1.1372E-05"
-        ixy="-2.0704E-05"
-        ixz="4.5006E-09"
-        iyy="0.00027852"
-        iyz="1.4251E-10"
-        izz="0.00028532" />
+        ixx="1.0044E-05"
+        ixy="-1.8089E-05"
+        ixz="3.9307E-09"
+        iyy="0.00024333"
+        iyz="1.2555E-10"
+        izz="0.00024934" />
     </inertial>
     <visual>
       <origin
@@ -546,9 +532,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.50196 0.50196 0.50196 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.5451 0.61569 0.85882 1" />
       </material>
     </visual>
     <collision>
@@ -566,7 +550,7 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="0.18101 0.0059195 0.01015"
-      rpy="0 0 -1.3090" />
+      rpy="0 0 -1.0" />
     <parent
       link="ThFR" />
     <child
@@ -574,36 +558,36 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
       k_velocity="0" />
     <mimic
       joint="ArFR_ThFR"
-      multiplier="-0.304"
+      multiplier="-0.2824"
       offset="0" />
   </joint>
   <link
     name="IMU2FR">
     <inertial>
       <origin
-        xyz="0 0 0.0015"
+        xyz="1.4988E-15 -1.1935E-15 0.0015"
         rpy="0 0 0" />
       <mass
         value="0.0009" />
       <inertia
         ixx="1.755E-08"
-        ixy="-3.4431E-23"
-        ixz="5.6512E-25"
+        ixy="-2.6185E-23"
+        ixz="1.5249E-24"
         iyy="3.0675E-08"
-        iyz="-8.1345E-24"
+        iyz="-7.5566E-24"
         izz="4.6875E-08" />
     </inertial>
     <visual>
@@ -647,17 +631,17 @@ Stephen Brawner (brawner@gmail.com)
     name="SeBR">
     <inertial>
       <origin
-        xyz="0.00022279 0.00033706 0.023497"
+        xyz="0.00039965 -0.00024478 0.025144"
         rpy="0 0 0" />
       <mass
-        value="0.029079" />
+        value="0.037021" />
       <inertia
-        ixx="3.9251E-06"
-        ixy="6.5626E-09"
-        ixz="-9.8203E-09"
-        iyy="4.0186E-06"
-        iyz="-6.2671E-09"
-        izz="2.6804E-06" />
+        ixx="5.4169E-06"
+        ixy="-9.1221E-09"
+        ixz="-2.0494E-08"
+        iyy="5.0821E-06"
+        iyz="1.3847E-08"
+        izz="3.2296E-06" />
     </inertial>
     <visual>
       <origin
@@ -671,8 +655,6 @@ Stephen Brawner (brawner@gmail.com)
         name="">
         <color
           rgba="0.89804 0.91765 0.92941 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalSteelDark.jpg" />
       </material>
     </visual>
     <collision>
@@ -690,21 +672,21 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="-0.1154 -0.095 0.044"
-      rpy="3.1416 1.5707 3.1416" />
+      rpy="1.5708 0 1.5708" />
     <parent
       link="M" />
     <child
       link="SeBR" />
     <axis
-      xyz="0.00011373 0 -1" />
+      xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
@@ -714,17 +696,17 @@ Stephen Brawner (brawner@gmail.com)
     name="ThBR">
     <inertial>
       <origin
-        xyz="0.065617 -0.006527 0.024512"
+        xyz="0.065249 -0.0067576 0.024445"
         rpy="0 0 0" />
       <mass
-        value="0.24964" />
+        value="0.2297" />
       <inertia
-        ixx="5.1153E-05"
-        ixy="2.3468E-05"
-        ixz="-5.2194E-06"
-        iyy="0.00072109"
-        iyz="-7.7661E-07"
-        izz="0.00073416" />
+        ixx="4.5425E-05"
+        ixy="2.0512E-05"
+        ixz="-4.5527E-06"
+        iyy="0.00063156"
+        iyz="-6.7477E-07"
+        izz="0.00064269" />
     </inertial>
     <visual>
       <origin
@@ -737,9 +719,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.62745 0.62745 0.62745 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -756,8 +736,8 @@ Stephen Brawner (brawner@gmail.com)
     name="ThBR_SeBR"
     type="revolute">
     <origin
-      xyz="2.2896E-05 -0.0144 0.045901"
-      rpy="1.5708 0.70743 0" />
+      xyz="-0.0144 -2.8116E-05 0.045901"
+      rpy="1.5708 1.2 -1.5708" />
     <parent
       link="SeBR" />
     <child
@@ -765,13 +745,13 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
@@ -781,16 +761,16 @@ Stephen Brawner (brawner@gmail.com)
     name="ArBR">
     <inertial>
       <origin
-        xyz="2.7735E-05 -0.007627 0.0033028"
+        xyz="-2.7735E-05 0.007627 0.0033028"
         rpy="0 0 0" />
       <mass
         value="0.0030347" />
       <inertia
         ixx="2.989E-07"
         ixy="4.865E-09"
-        ixz="-2.5487E-11"
+        ixz="2.5487E-11"
         iyy="4.3267E-08"
-        iyz="5.0977E-09"
+        iyz="-5.0977E-09"
         izz="3.2577E-07" />
     </inertial>
     <visual>
@@ -805,8 +785,6 @@ Stephen Brawner (brawner@gmail.com)
         name="">
         <color
           rgba="0.89804 0.91765 0.92941 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalSteelDark.jpg" />
       </material>
     </visual>
     <collision>
@@ -824,7 +802,7 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="0.050268 -0.027324 0.025223"
-      rpy="-1.5708 0 3.1416" />
+      rpy="1.5708 0.71 0" />
     <parent
       link="ThBR" />
     <child
@@ -832,16 +810,16 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-1.5708"
+      upper="0.20944"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
-      soft_upper_limit="0.7"
-      soft_lower_limit="-0.7"
+      soft_upper_limit="0.2"
+      soft_lower_limit="-1.5"
       k_velocity="0" />
   </joint>
   <link
@@ -854,7 +832,7 @@ Stephen Brawner (brawner@gmail.com)
         value="0.0009" />
       <inertia
         ixx="1.755E-08"
-        ixy="-1.6544E-24"
+        ixy="-4.9631E-24"
         ixz="-2.8023E-24"
         iyy="3.0675E-08"
         iyz="2.3016E-24"
@@ -901,17 +879,17 @@ Stephen Brawner (brawner@gmail.com)
     name="ShBR">
     <inertial>
       <origin
-        xyz="-0.065758 -0.007629 0.014842"
+        xyz="-0.067367 -0.0073554 0.014841"
         rpy="0 0 0" />
       <mass
-        value="0.10028" />
+        value="0.088995" />
       <inertia
-        ixx="1.1372E-05"
-        ixy="-2.0704E-05"
-        ixz="4.5006E-09"
-        iyy="0.00027852"
-        iyz="1.4248E-10"
-        izz="0.00028532" />
+        ixx="1.0044E-05"
+        ixy="-1.8089E-05"
+        ixz="3.9308E-09"
+        iyy="0.00024333"
+        iyz="1.2556E-10"
+        izz="0.00024934" />
     </inertial>
     <visual>
       <origin
@@ -924,9 +902,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.50196 0.50196 0.50196 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.5451 0.61569 0.85882 1" />
       </material>
     </visual>
     <collision>
@@ -944,7 +920,7 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="0.18101 0.0059195 0.01015"
-      rpy="0 0 -1.3090" />
+      rpy="0 0 -1.0" />
     <parent
       link="ThBR" />
     <child
@@ -952,33 +928,33 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
       k_velocity="0" />
     <mimic
       joint="ArBR_ThBR"
-      multiplier="-0.304"
+      multiplier="-0.2824"
       offset="0" />
   </joint>
   <link
     name="IMU2BR">
     <inertial>
       <origin
-        xyz="0 -2.7756E-17 0.0015"
+        xyz="1.4988E-15 -1.1519E-15 0.0015"
         rpy="0 0 0" />
       <mass
         value="0.0009" />
       <inertia
         ixx="1.755E-08"
-        ixy="-3.2648E-23"
+        ixy="-3.2674E-23"
         ixz="1.3527E-25"
         iyy="3.0675E-08"
         iyz="-7.7142E-24"
@@ -1025,17 +1001,17 @@ Stephen Brawner (brawner@gmail.com)
     name="SeFL">
     <inertial>
       <origin
-        xyz="0.00022279 0.00033706 0.023497"
+        xyz="-0.00039965 0.00024478 0.025144"
         rpy="0 0 0" />
       <mass
-        value="0.029079" />
+        value="0.037021" />
       <inertia
-        ixx="3.9251E-06"
-        ixy="6.5626E-09"
-        ixz="-9.8203E-09"
-        iyy="4.0186E-06"
-        iyz="-6.2671E-09"
-        izz="2.6804E-06" />
+        ixx="5.4169E-06"
+        ixy="-9.1221E-09"
+        ixz="2.0494E-08"
+        iyy="5.0821E-06"
+        iyz="-1.3847E-08"
+        izz="3.2296E-06" />
     </inertial>
     <visual>
       <origin
@@ -1049,8 +1025,6 @@ Stephen Brawner (brawner@gmail.com)
         name="">
         <color
           rgba="0.89804 0.91765 0.92941 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalSteelDark.jpg" />
       </material>
     </visual>
     <collision>
@@ -1068,21 +1042,21 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="0.1446 0.095 0.044"
-      rpy="0 -1.5707 -3.1416" />
+      rpy="1.5708 0 1.5708" />
     <parent
       link="M" />
     <child
       link="SeFL" />
     <axis
-      xyz="0.00011373 0 -1" />
+      xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
@@ -1092,17 +1066,17 @@ Stephen Brawner (brawner@gmail.com)
     name="ThFL">
     <inertial>
       <origin
-        xyz="-0.065617 -0.006527 0.024441"
+        xyz="-0.065249 -0.0067576 0.024344"
         rpy="0 0 0" />
       <mass
-        value="0.24964" />
+        value="0.2297" />
       <inertia
-        ixx="5.1153E-05"
-        ixy="-2.3468E-05"
-        ixz="5.239E-06"
-        iyy="0.00072109"
-        iyz="-7.8973E-07"
-        izz="0.00073416" />
+        ixx="4.5425E-05"
+        ixy="-2.0512E-05"
+        ixz="4.5799E-06"
+        iyy="0.00063156"
+        iyz="-6.9302E-07"
+        izz="0.00064269" />
     </inertial>
     <visual>
       <origin
@@ -1115,9 +1089,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.62745 0.62745 0.62745 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -1134,8 +1106,8 @@ Stephen Brawner (brawner@gmail.com)
     name="ThFL_SeFL"
     type="revolute">
     <origin
-      xyz="2.2896E-05 -0.0144 0.045901"
-      rpy="1.5708 -0.70743 0" />
+      xyz="0.0144 2.8116E-05 0.045901"
+      rpy="1.5708 -1.35 1.5708" />
     <parent
       link="SeFL" />
     <child
@@ -1143,13 +1115,13 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
@@ -1159,16 +1131,16 @@ Stephen Brawner (brawner@gmail.com)
     name="ArFL">
     <inertial>
       <origin
-        xyz="2.7735E-05 -0.007627 0.0033028"
+        xyz="-2.7735E-05 0.007627 0.0033028"
         rpy="0 0 0" />
       <mass
         value="0.0030347" />
       <inertia
         ixx="2.989E-07"
         ixy="4.865E-09"
-        ixz="-2.5487E-11"
+        ixz="2.5487E-11"
         iyy="4.3267E-08"
-        iyz="5.0977E-09"
+        iyz="-5.0977E-09"
         izz="3.2577E-07" />
     </inertial>
     <visual>
@@ -1183,8 +1155,6 @@ Stephen Brawner (brawner@gmail.com)
         name="">
         <color
           rgba="0.89804 0.91765 0.92941 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalSteelDark.jpg" />
       </material>
     </visual>
     <collision>
@@ -1202,7 +1172,7 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="-0.050268 -0.027324 0.025077"
-      rpy="-1.5708 0 -3.1416" />
+      rpy="1.5708 -0.71 0" />
     <parent
       link="ThFL" />
     <child
@@ -1210,16 +1180,16 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.20944"
+      upper="1.5708"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
-      soft_upper_limit="0.7"
-      soft_lower_limit="-0.7"
+      soft_upper_limit="1.5"
+      soft_lower_limit="-0.2"
       k_velocity="0" />
   </joint>
   <link
@@ -1279,17 +1249,17 @@ Stephen Brawner (brawner@gmail.com)
     name="ShFL">
     <inertial>
       <origin
-        xyz="0.065758 -0.007629 0.014841"
+        xyz="0.067367 -0.0073554 0.01484"
         rpy="0 0 0" />
       <mass
-        value="0.10028" />
+        value="0.088995" />
       <inertia
-        ixx="1.1372E-05"
-        ixy="2.0704E-05"
-        ixz="4.5003E-09"
-        iyy="0.00027852"
-        iyz="-1.4239E-10"
-        izz="0.00028532" />
+        ixx="1.0044E-05"
+        ixy="1.8089E-05"
+        ixz="3.9307E-09"
+        iyy="0.00024333"
+        iyz="-1.2554E-10"
+        izz="0.00024934" />
     </inertial>
     <visual>
       <origin
@@ -1302,9 +1272,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.50196 0.50196 0.50196 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.5451 0.61569 0.85882 1" />
       </material>
     </visual>
     <collision>
@@ -1322,7 +1290,7 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="-0.18101 0.0059195 0.01015"
-      rpy="0 0 1.3090" />
+      rpy="0 0 1.0" />
     <parent
       link="ThFL" />
     <child
@@ -1330,33 +1298,33 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
       k_velocity="0" />
     <mimic
       joint="ArFL_ThFL"
-      multiplier="-0.304"
+      multiplier="-0.2824"
       offset="0" />
   </joint>
   <link
     name="IMU2FL">
     <inertial>
       <origin
-        xyz="0 0 0.0015"
+        xyz="3.6082E-16 -3.0531E-16 0.0015"
         rpy="0 0 0" />
       <mass
         value="0.0009" />
       <inertia
         ixx="1.755E-08"
-        ixy="-1.0857E-23"
+        ixy="-1.0676E-23"
         ixz="1.0751E-23"
         iyy="3.0675E-08"
         iyz="2.5305E-24"
@@ -1403,17 +1371,17 @@ Stephen Brawner (brawner@gmail.com)
     name="SeBL">
     <inertial>
       <origin
-        xyz="0.00022279 0.00033706 0.023497"
+        xyz="-0.00039965 0.00024478 0.025144"
         rpy="0 0 0" />
       <mass
-        value="0.029079" />
+        value="0.037021" />
       <inertia
-        ixx="3.9251E-06"
-        ixy="6.5626E-09"
-        ixz="-9.8203E-09"
-        iyy="4.0186E-06"
-        iyz="-6.2671E-09"
-        izz="2.6804E-06" />
+        ixx="5.4169E-06"
+        ixy="-9.1221E-09"
+        ixz="2.0494E-08"
+        iyy="5.0821E-06"
+        iyz="-1.3847E-08"
+        izz="3.2296E-06" />
     </inertial>
     <visual>
       <origin
@@ -1427,8 +1395,6 @@ Stephen Brawner (brawner@gmail.com)
         name="">
         <color
           rgba="0.89804 0.91765 0.92941 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalSteelDark.jpg" />
       </material>
     </visual>
     <collision>
@@ -1446,21 +1412,21 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="-0.1154 0.095 0.044"
-      rpy="0 -1.5707 -3.1416" />
+      rpy="1.5708 0 1.5708" />
     <parent
       link="M" />
     <child
       link="SeBL" />
     <axis
-      xyz="0.00011373 0 -1" />
+      xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
@@ -1470,17 +1436,17 @@ Stephen Brawner (brawner@gmail.com)
     name="ThBL">
     <inertial>
       <origin
-        xyz="-0.065617 -0.006527 0.024441"
+        xyz="-0.065249 -0.0067576 0.024344"
         rpy="0 0 0" />
       <mass
-        value="0.24964" />
+        value="0.2297" />
       <inertia
-        ixx="5.1153E-05"
-        ixy="-2.3468E-05"
-        ixz="5.239E-06"
-        iyy="0.00072109"
-        iyz="-7.8973E-07"
-        izz="0.00073416" />
+        ixx="4.5425E-05"
+        ixy="-2.0512E-05"
+        ixz="4.5799E-06"
+        iyy="0.00063156"
+        iyz="-6.9302E-07"
+        izz="0.00064269" />
     </inertial>
     <visual>
       <origin
@@ -1493,9 +1459,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.62745 0.62745 0.62745 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -1512,8 +1476,8 @@ Stephen Brawner (brawner@gmail.com)
     name="ThBL_SeBL"
     type="revolute">
     <origin
-      xyz="2.2896E-05 -0.0144 0.045901"
-      rpy="1.5708 -0.70743 0" />
+      xyz="0.0144 2.8116E-05 0.045901"
+      rpy="1.5708 -1.2 1.5708" />
     <parent
       link="SeBL" />
     <child
@@ -1521,13 +1485,13 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
@@ -1537,16 +1501,16 @@ Stephen Brawner (brawner@gmail.com)
     name="ArBL">
     <inertial>
       <origin
-        xyz="2.7735E-05 -0.007627 0.0033028"
+        xyz="-2.7735E-05 0.007627 0.0033028"
         rpy="0 0 0" />
       <mass
         value="0.0030347" />
       <inertia
         ixx="2.989E-07"
         ixy="4.865E-09"
-        ixz="-2.5487E-11"
+        ixz="2.5487E-11"
         iyy="4.3267E-08"
-        iyz="5.0977E-09"
+        iyz="-5.0977E-09"
         izz="3.2577E-07" />
     </inertial>
     <visual>
@@ -1561,8 +1525,6 @@ Stephen Brawner (brawner@gmail.com)
         name="">
         <color
           rgba="0.89804 0.91765 0.92941 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalSteelDark.jpg" />
       </material>
     </visual>
     <collision>
@@ -1580,7 +1542,7 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="-0.050268 -0.027324 0.025077"
-      rpy="-1.5708 0 -3.1416" />
+      rpy="1.5708 -0.71 0" />
     <parent
       link="ThBL" />
     <child
@@ -1588,23 +1550,23 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.20944"
+      upper="1.5708"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
-      soft_upper_limit="0.7"
-      soft_lower_limit="-0.7"
+      soft_upper_limit="1.5"
+      soft_lower_limit="-0.2"
       k_velocity="0" />
   </joint>
   <link
     name="IMU1BL">
     <inertial>
       <origin
-        xyz="5.8287E-16 5.6899E-16 0.0015"
+        xyz="0 0 0.0015"
         rpy="0 0 0" />
       <mass
         value="0.0009" />
@@ -1657,17 +1619,17 @@ Stephen Brawner (brawner@gmail.com)
     name="ShBL">
     <inertial>
       <origin
-        xyz="0.065758 -0.007629 0.014841"
+        xyz="0.067367 -0.0073554 0.01484"
         rpy="0 0 0" />
       <mass
-        value="0.10028" />
+        value="0.088995" />
       <inertia
-        ixx="1.1372E-05"
-        ixy="2.0704E-05"
-        ixz="4.5005E-09"
-        iyy="0.00027852"
-        iyz="-1.4243E-10"
-        izz="0.00028532" />
+        ixx="1.0044E-05"
+        ixy="1.8089E-05"
+        ixz="3.9307E-09"
+        iyy="0.00024333"
+        iyz="-1.2557E-10"
+        izz="0.00024934" />
     </inertial>
     <visual>
       <origin
@@ -1680,9 +1642,7 @@ Stephen Brawner (brawner@gmail.com)
       <material
         name="">
         <color
-          rgba="0.50196 0.50196 0.50196 1" />
-        <texture
-          filename="package://cerberus_v1/description/textures/MetalPaintedMattedDark.jpg" />
+          rgba="0.5451 0.61569 0.85882 1" />
       </material>
     </visual>
     <collision>
@@ -1700,7 +1660,7 @@ Stephen Brawner (brawner@gmail.com)
     type="revolute">
     <origin
       xyz="-0.18101 0.0059195 0.01015"
-      rpy="0 0 1.3090" />
+      rpy="0 0 1.0" />
     <parent
       link="ThBL" />
     <child
@@ -1708,27 +1668,27 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-0.785398163397"
-      upper="0.785398163397"
-      effort="1.67"
-      velocity="5.0" />
+      lower="-0.7854"
+      upper="0.7854"
+      effort="1.7"
+      velocity="6.545" />
     <dynamics
-      damping="0.005"
-      friction="0.03" />
+      damping="0.025"
+      friction="0.12" />
     <safety_controller
       soft_upper_limit="0.7"
       soft_lower_limit="-0.7"
       k_velocity="0" />
     <mimic
       joint="ArBL_ThBL"
-      multiplier="-0.304"
+      multiplier="-0.2824"
       offset="0" />
   </joint>
   <link
     name="IMU2BL">
     <inertial>
       <origin
-        xyz="-5.5511E-17 8.1879E-16 0.0015"
+        xyz="3.6082E-16 -2.6368E-16 0.0015"
         rpy="0 0 0" />
       <mass
         value="0.0009" />

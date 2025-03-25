@@ -17,8 +17,8 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(log REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
-find_package(msgroup REQUIRED)
-find_package(mswaypoint REQUIRED)
+find_package(msggroup REQUIRED)
+find_package(msgwaypoint REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(yaml-cpp REQUIRED)
 find_package(orocos_kdl_vendor REQUIRED)
@@ -29,8 +29,8 @@ add_executable(iksolver src/iksolver.cpp src/main.cpp)
 ament_target_dependencies(iksolver
   log
   rclcpp_lifecycle
-  msgroup
-  mswaypoint
+  msggroup
+  msgwaypoint
   sensor_msgs
   yaml-cpp
   orocos_kdl_vendor

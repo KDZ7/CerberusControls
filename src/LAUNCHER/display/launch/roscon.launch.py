@@ -84,6 +84,7 @@ def generate_launch_description():
     #     output="screen",
     #     remappings=[("joint_states", "/csystem/joint_commands")]
     # )
+
     iksolver = Node(
         package="iksolver",
         executable="iksolver",
@@ -157,8 +158,9 @@ def generate_launch_description():
     # )
     event_handler = [
         RegisterEventHandler(OnProcessStart(target_action=display_process, on_start=[csystem_controller_spawner])),
+        # RegisterEventHandler(OnProcessStart(target_action=csystem_controller_spawner, on_start=[joint_state_publisher_gui])),
+        # RegisterEventHandler(OnProcessStart(target_action=joint_state_publisher_gui, on_start=[iksolver])),
         # RegisterEventHandler(OnProcessStart(target_action=csystem_controller_spawner, on_start=[transistion_csystem_controller_spawner])),
-        # RegisterEventHandler(OnProcessStart(target_action=transistion_csystem_controller_spawner, on_start=[iksolver])),
         RegisterEventHandler(OnProcessStart(target_action=csystem_controller_spawner, on_start=[iksolver])),
         RegisterEventHandler(OnProcessStart(target_action=iksolver, on_start=[transistion_iksolver])),
         RegisterEventHandler(OnProcessStart(target_action=transistion_iksolver, on_start=[iksolver_bridge])),

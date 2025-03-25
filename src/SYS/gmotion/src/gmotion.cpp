@@ -32,7 +32,7 @@ namespace cerberus_gait
         LOG_INFO("GMotion activating ...");
 
         command_sub_ = this->create_subscription<std_msgs::msg::UInt8>("~/command", rclcpp::QoS(10), std::bind(&GMotion::command_callback, this, std::placeholders::_1));
-        solutions_sub_ = this->create_subscription<msgroup::msg::GroupState>("~/solutions", rclcpp::QoS(10), std::bind(&GMotion::solutions_callback, this, std::placeholders::_1));
+        solutions_sub_ = this->create_subscription<msggroup::msg::GroupState>("~/solutions", rclcpp::QoS(10), std::bind(&GMotion::solutions_callback, this, std::placeholders::_1));
         joint_states_sub_ = this->create_subscription<sensor_msgs::msg::JointState>("~/in", rclcpp::QoS(10), std::bind(&GMotion::joint_states_callback, this, std::placeholders::_1));
         joint_states_pub_ = this->create_publisher<sensor_msgs::msg::JointState>("~/out", rclcpp::QoS(10));
         LOG_INFO("GMotion activated successfully.");
@@ -112,10 +112,40 @@ namespace cerberus_gait
                         {
                             step_t new_step;
                             new_step.leg = step["leg"].as<std::string>();
-                            new_step.x = step["x"].as<double>();
-                            new_step.y = step["y"].as<double>();
-                            new_step.z = step["z"].as<double>();
-                            new_step.wait = step["wait"].as<double>();
+
+                            if (step["joints"])
+                            {
+                                YAML::Node joints = step["joints"];
+                                for (size_t i = 0; i < joints.size(); i++)
+                                    new_step.joints.push_back(joints[i].as<double>());
+
+                                std::stringstream joint_values;
+                                for (size_t i = 0; i < new_step.joints.size(); i++)
+                                {
+                                    joint_values << new_step.joints[i];
+                                    if (i < new_step.joints.size() - 1)
+                                        joint_values << ", ";
+                                }
+                                LOG_INFO(" > Loaded in joint space: Leg [ " << new_step.leg << " ] --> [ " << joint_values.str() << " ]");
+                            }
+                            else
+                            {
+                                new_step.x = step["x"].as<double>();
+                                new_step.y = step["y"].as<double>();
+                                new_step.z = step["z"].as<double>();
+                                LOG_INFO(" > Loaded in cartesian space: Leg [ " << new_step.leg << " ] --> ( " << new_step.x << ", " << new_step.y << ", " << new_step.z << " )");
+                            }
+
+                            if (step["wait"])
+                            {
+                                new_step.wait = step["wait"].as<double>();
+                                LOG_INFO(" > [" << new_step.leg << "] wait time loaded: " << new_step.wait << "s");
+                            }
+                            else
+                            {
+                                new_step.wait = 0.0;
+                                LOG_INFO(" > [" << new_step.leg << "] wait time not specified. Defaulting to 0.0s");
+                            }
                             auto it = std::find(new_sequence.sync_legs.begin(), new_sequence.sync_legs.end(), new_step.leg);
                             if (it != new_sequence.sync_legs.end())
                                 new_sequence.steps.push_back(new_step);
@@ -125,18 +155,18 @@ namespace cerberus_gait
                     new_gait.sequences.push_back(new_sequence);
                 }
                 gaits_[new_gait.name] = new_gait;
-                LOG_INFO("> Gait loaded [ " << new_gait.name << " ]");
+                LOG_INFO(" > Gait loaded [ " << new_gait.name << " ]");
             }
             if (config["solver"])
             {
                 solver_name_ = config["solver"].as<std::string>();
-                LOG_INFO("> Solver loaded [ " << solver_name_ << " ]");
+                LOG_INFO(" > Solver loaded [ " << solver_name_ << " ]");
             }
             else
             {
                 LOG_WARN("No solver block found in configuration. Default solver will be used.");
                 solver_name_ = "GRID";
-                LOG_INFO("> Solver loaded [ " << solver_name_ << " ]");
+                LOG_INFO(" > Solver loaded [ " << solver_name_ << " ]");
             }
             LOG_INFO("GMotion configuration loaded successfully.");
             return true;
@@ -147,7 +177,6 @@ namespace cerberus_gait
             return false;
         }
     }
-
     void GMotion::command_callback(const std_msgs::msg::UInt8::SharedPtr msg)
     {
         LOG_INFO("GMotion command received: " << int(msg->data));
@@ -215,36 +244,44 @@ namespace cerberus_gait
         }
     }
 
-    void GMotion::solutions_callback(const msgroup::msg::GroupState::SharedPtr msg)
+    void GMotion::solutions_callback(const msggroup::msg::GroupState::SharedPtr msg)
     {
-        {
-            std::lock_guard<std::mutex> lock(solutions_mutex_);
-            solutions_cache_[msg->group] = *msg;
-        }
+        std::lock_guard<std::mutex> lock(solutions_mutex_);
+
+        msggroup::msg::GroupState group_state;
+        group_state.group = msg->group;
+        group_state.name = msg->name;
+        group_state.position = msg->position;
+        group_state.velocity = msg->velocity;
+        group_state.effort = msg->effort;
+        solutions_cache_[msg->group] = group_state;
+
         LOG_INFO("GMotion: solutions updated cache [ " << msg->group << " ]");
     }
+
     void GMotion::joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg)
     {
         std::lock_guard<std::mutex> lock(solutions_mutex_);
         if (solutions_cache_.empty())
             return;
         sensor_msgs::msg::JointState joint_state = *msg;
-        for (auto &solution : solutions_cache_)
-        {
-            const auto &group_state = solution.second;
-            for (size_t i = 0; i < joint_state.name.size(); i++)
+        for (size_t i = 0; i < joint_state.name.size(); i++)
+            for (const auto &solution : solutions_cache_)
             {
+                const auto &group_state = solution.second;
                 auto it = std::find(group_state.name.begin(), group_state.name.end(), joint_state.name[i]);
                 if (it != group_state.name.end())
                 {
-                    joint_state.position[i] = group_state.position[std::distance(group_state.name.begin(), it)];
-                    joint_state.velocity[i] = group_state.velocity[std::distance(group_state.name.begin(), it)];
-                    joint_state.effort[i] = group_state.effort[std::distance(group_state.name.begin(), it)];
+                    size_t index = std::distance(group_state.name.begin(), it);
+                    joint_state.position[i] = group_state.position[index];
+                    joint_state.velocity[i] = group_state.velocity[index];
+                    joint_state.effort[i] = group_state.effort[index];
+                    break;
                 }
             }
-        }
         joint_states_pub_->publish(joint_state);
     }
+
     void GMotion::action(const gait_t &gait)
     {
         if (gait.name == "stop")
@@ -264,101 +301,172 @@ namespace cerberus_gait
         options.automatically_declare_parameters_from_overrides(true);
         auto backend = std::make_shared<rclcpp::Node>("gmotion", "backend", options);
         executor_ = std::make_shared<rclcpp::executors::SingleThreadedExecutor>();
-        auto waypoint_pub = backend->create_publisher<mswaypoint::msg::Waypoint>("~/waypoint", rclcpp::QoS(10));
+        auto waypoint_pub = backend->create_publisher<msgwaypoint::msg::Waypoint>("~/waypoint", rclcpp::QoS(10));
+        auto solutions_pub = backend->create_publisher<msggroup::msg::GroupState>("~/solutions", rclcpp::QoS(10));
         executor_->add_node(backend);
 
-        std::thread([this, gait, waypoint_pub, backend]() -> void
-                    { 
-    std::string name = gait.name;
-    while(rclcpp::ok() && executor_) {
-        auto it = gaits_.find(name);
-        if (it == gaits_.end())
+        std::thread([this, gait, waypoint_pub, solutions_pub, backend]() -> void
+                    {
+        std::string name = gait.name;
+        while (rclcpp::ok() && executor_)
         {
-            LOG_ERROR("Gait [ " << name << " ] not found. Aborting sequence.");
-            break;
-        }
-        const gait_t &current_gait = it->second;
-        for (const auto &sequence : current_gait.sequences)
-        {
-            if(!rclcpp::ok() || !executor_) break;
-            
-            std::map<std::string, std::vector<step_t>> leg_steps;
-            for (const auto &step : sequence.steps)
-                leg_steps[step.leg].push_back(step);
+            auto it = gaits_.find(name);
+            if (it == gaits_.end())
+            {
+                LOG_ERROR("Gait [ " << name << " ] not found. Aborting sequence.");
+                break;
+            }
+            const gait_t &current_gait = it->second;
+            for (const auto &sequence : current_gait.sequences)
+            {
+                if (!rclcpp::ok() || !executor_)
+                    break;
 
-            struct ScheduledWaypoint {
-                mswaypoint::msg::Waypoint waypoint;
-                rclcpp::Time publish_time;
-            };
-            
-            std::vector<ScheduledWaypoint> scheduled_waypoints;
-            rclcpp::Time start_time = backend->now();
-            
-            for (const auto &leg_name : sequence.sync_legs) {
-                auto it = leg_steps.find(leg_name);
-                if (it != leg_steps.end()) {
-                    double accumulated_wait = 0.0;
-                    for (const auto &step : it->second) {
-                        mswaypoint::msg::Waypoint waypoint;
-                        waypoint.group = leg_name;
+                struct ScheduledWaypoint
+                {
+                    msgwaypoint::msg::Waypoint waypoint;
+                    rclcpp::Time publish_time;
+                };
+
+                struct ScheduledSolution
+                {
+                    msggroup::msg::GroupState solution;
+                    rclcpp::Time publish_time;
+                };
+
+                std::vector<ScheduledWaypoint> scheduled_waypoints;
+                std::vector<ScheduledSolution> scheduled_solutions;
+                rclcpp::Time start_time = backend->now();
+                double accumulated_wait = 0.0;
+
+                for (const auto &step : sequence.steps)
+                {
+                    auto it = std::find(sequence.sync_legs.begin(), sequence.sync_legs.end(), step.leg);
+                    if (it == sequence.sync_legs.end())
+                    {
+                        LOG_WARN("Leg [ " << step.leg << " ] is not in sync list of sequence. Ignoring step.");
+                        continue;
+                    }
+
+                    if (!step.joints.empty())
+                    {
+                        msggroup::msg::GroupState solution;
+                        solution.group = step.leg;
+                        std::vector<std::string> joint_names;
+
+                        if (step.leg == "LegFR")
+                            joint_names = {"SeFR_M", "ThFR_SeFR", "ArFR_ThFR"};
+                        else if (step.leg == "LegFL")
+                            joint_names = {"SeFL_M", "ThFL_SeFL", "ArFL_ThFL"};
+                        else if (step.leg == "LegBR")
+                            joint_names = {"SeBR_M", "ThBR_SeBR", "ArBR_ThBR"};
+                        else if (step.leg == "LegBL")
+                            joint_names = {"SeBL_M", "ThBL_SeBL", "ArBL_ThBL"};
+
+                        for (size_t i = 0; i < step.joints.size() && i < joint_names.size(); i++)
+                        {
+                            solution.name.push_back(joint_names[i]);
+                            solution.position.push_back(step.joints[i]);
+                            solution.velocity.push_back(0.0);
+                            solution.effort.push_back(0.0);
+                        }
+
+                        scheduled_solutions.push_back({solution, start_time + rclcpp::Duration::from_seconds(accumulated_wait)});
+
+                        std::stringstream joint_info;
+                        for (size_t i = 0; i < solution.name.size(); i++)
+                        {
+                            joint_info << solution.name[i] << " = " << solution.position[i];
+                            if (i < solution.name.size() - 1)
+                                joint_info << ", ";
+                        }
+                        LOG_INFO("Scheduled joint step: [ " << name << " ] --> [ " << step.leg << " ] : [" << joint_info.str() << "] at relative time: " << accumulated_wait << "s");
+                    }
+                    else
+                    {
+                        msgwaypoint::msg::Waypoint waypoint;
+                        waypoint.group = step.leg;
                         waypoint.solver = solver_name_;
                         waypoint.x = step.x;
                         waypoint.y = step.y;
                         waypoint.z = step.z;
-                        
-                        scheduled_waypoints.push_back({
-                            waypoint, 
-                            start_time + rclcpp::Duration::from_seconds(accumulated_wait)
-                        });
-                        
-                        LOG_INFO("Scheduled step: [ " << name << " ] --> [ " << leg_name  << " ] : ( " << step.x << ", " << step.y << ", " << step.z << " ) at relative time: " << accumulated_wait << "s");
-                        accumulated_wait += step.wait;
-                    }
-                }
-            }
-            
-            std::sort(scheduled_waypoints.begin(), scheduled_waypoints.end(), 
-                     [](const ScheduledWaypoint &a, const ScheduledWaypoint &b) {
-                         return a.publish_time < b.publish_time;
-                     });
-            
-            for (const auto &scheduled : scheduled_waypoints) {
-                if (!rclcpp::ok() || !executor_) break;
-                
-                rclcpp::Time now = backend->now();
-                if (now < scheduled.publish_time) {
-                    auto sleep_duration = scheduled.publish_time - now;
-                    auto sleep_ns = std::chrono::nanoseconds(sleep_duration.nanoseconds());
-                    rclcpp::sleep_for(sleep_ns);
-                }
-                
-                waypoint_pub->publish(scheduled.waypoint);
-            }
-            
-            double max_total_wait = 0.0;
-            for (const auto &leg_pair : leg_steps) {
-                double total_wait = 0.0;
-                for (const auto &step : leg_pair.second) {
-                    total_wait += step.wait;
-                }
-                max_total_wait = std::max(max_total_wait, total_wait);
-            }
-            
-            rclcpp::Time end_time = start_time + rclcpp::Duration::from_seconds(max_total_wait);
-            rclcpp::Time current_time = backend->now();
-            if (current_time < end_time && executor_) {
-                auto remaining_duration = end_time - current_time;
-                auto remaining_ns = std::chrono::nanoseconds(remaining_duration.nanoseconds());
-                rclcpp::sleep_for(remaining_ns);
-            }
-        }
 
-        if(!current_gait.goto_gait.empty())
-            name = current_gait.goto_gait;
-        else 
-            break;
-    }
-    LOG_INFO("GMotion: execution completed."); })
+                        scheduled_waypoints.push_back({waypoint, start_time + rclcpp::Duration::from_seconds(accumulated_wait)});
+                        LOG_INFO("Scheduled cartesian step: [ " << name << " ] --> [ " << step.leg << " ] : ( " << step.x << ", " << step.y << ", " << step.z << " ) at relative time: " << accumulated_wait << "s");
+                    }
+
+                    accumulated_wait += step.wait;
+                }
+
+                struct ScheduledAction
+                {
+                    enum class Type { WAYPOINT, SOLUTION } type;
+                    msgwaypoint::msg::Waypoint waypoint;
+                    msggroup::msg::GroupState solution;
+                    rclcpp::Time publish_time;
+                };
+                std::vector<ScheduledAction> scheduled_actions;
+                
+                for (const auto &waypoint : scheduled_waypoints)
+                {
+                    ScheduledAction action;
+                    action.type = ScheduledAction::Type::WAYPOINT;
+                    action.waypoint = waypoint.waypoint;
+                    action.publish_time = waypoint.publish_time;
+                    scheduled_actions.push_back(action);
+                }
+
+                for (const auto &solution : scheduled_solutions)
+                {
+                    ScheduledAction action;
+                    action.type = ScheduledAction::Type::SOLUTION;
+                    action.solution = solution.solution;
+                    action.publish_time = solution.publish_time;
+                    scheduled_actions.push_back(action);
+                }
+
+                std::sort(scheduled_actions.begin(), scheduled_actions.end(),
+                    [](const ScheduledAction &a, const ScheduledAction &b) {
+                        return a.publish_time < b.publish_time;
+                    });
+
+                for (const auto &action : scheduled_actions)
+                {
+                    if (!rclcpp::ok() || !executor_)
+                        break;
+
+                    rclcpp::Time now = backend->now();
+                    if (now < action.publish_time)
+                    {
+                        auto sleep_duration = action.publish_time - now;
+                        auto sleep_ns = std::chrono::nanoseconds(sleep_duration.nanoseconds());
+                        rclcpp::sleep_for(sleep_ns);
+                        LOG_INFO("GMotion: waiting for next action: " << sleep_duration.seconds() << "s");
+                    }
+
+                    if (action.type == ScheduledAction::Type::WAYPOINT)
+                        waypoint_pub->publish(action.waypoint);
+                    else if (action.type == ScheduledAction::Type::SOLUTION)
+                        solutions_pub->publish(action.solution);
+                }
+
+                rclcpp::Time end_time = start_time + rclcpp::Duration::from_seconds(accumulated_wait);
+                rclcpp::Time current_time = backend->now();
+                if (current_time < end_time && executor_)
+                {
+                    auto remaining_duration = end_time - current_time;
+                    auto remaining_ns = std::chrono::nanoseconds(remaining_duration.nanoseconds());
+                    rclcpp::sleep_for(remaining_ns);
+                    LOG_INFO("GMotion: waiting for sequence completion: " << remaining_duration.seconds() << "s");
+                }
+            }
+
+            if (!current_gait.goto_gait.empty())
+                name = current_gait.goto_gait;
+            else
+                break;
+        }
+        LOG_INFO("GMotion: execution completed."); })
             .detach();
     }
 } // namespace cerberus_gait

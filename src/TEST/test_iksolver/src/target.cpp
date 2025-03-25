@@ -1,5 +1,5 @@
 #include "rclcpp/rclcpp.hpp"
-#include "mswaypoint/msg/waypoint.hpp"
+#include "msgwaypoint/msg/waypoint.hpp"
 #include "geometry_msgs/msg/point_stamped.hpp"
 class Target : public rclcpp::Node
 {
@@ -8,12 +8,12 @@ public:
     {
         this->declare_parameter("base_frame", "base_link");
         base_frame_ = this->get_parameter("base_frame").as_string();
-        waypoint_sub_ = this->create_subscription<mswaypoint::msg::Waypoint>("~/waypoint", 10, std::bind(&Target::waypoint_callback, this, std::placeholders::_1));
+        waypoint_sub_ = this->create_subscription<msgwaypoint::msg::Waypoint>("~/waypoint", 10, std::bind(&Target::waypoint_callback, this, std::placeholders::_1));
         target_pub_ = this->create_publisher<geometry_msgs::msg::PointStamped>("~/target", 10);
     }
 
 private:
-    void waypoint_callback(const mswaypoint::msg::Waypoint::SharedPtr msg)
+    void waypoint_callback(const msgwaypoint::msg::Waypoint::SharedPtr msg)
     {
         geometry_msgs::msg::PointStamped target;
         target.header.stamp = this->now();
@@ -24,7 +24,7 @@ private:
         target_pub_->publish(target);
     }
 
-    rclcpp::Subscription<mswaypoint::msg::Waypoint>::SharedPtr waypoint_sub_;
+    rclcpp::Subscription<msgwaypoint::msg::Waypoint>::SharedPtr waypoint_sub_;
     rclcpp::Publisher<geometry_msgs::msg::PointStamped>::SharedPtr target_pub_;
     std::string base_frame_;
 };

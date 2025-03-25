@@ -9,9 +9,9 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_lifecycle/lifecycle_node.hpp"
 #include "std_msgs/msg/u_int8.hpp"
-#include "msgroup/msg/group_state.hpp"
+#include "msggroup/msg/group_state.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
-#include "mswaypoint/msg/waypoint.hpp"
+#include "msgwaypoint/msg/waypoint.hpp"
 #include "yaml-cpp/yaml.h"
 
 namespace cerberus_gait
@@ -21,6 +21,7 @@ namespace cerberus_gait
     {
         std::string leg;
         double x, y, z;
+        std::vector<double> joints;
         double wait;
     };
     struct sequence_t
@@ -68,7 +69,7 @@ namespace cerberus_gait
     private:
         bool loadConfig();
         void command_callback(const std_msgs::msg::UInt8::SharedPtr msg);
-        void solutions_callback(const msgroup::msg::GroupState::SharedPtr msg);
+        void solutions_callback(const msggroup::msg::GroupState::SharedPtr msg);
         void joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
         void action(const gait_t &gait);
 
@@ -76,10 +77,10 @@ namespace cerberus_gait
         std::map<std::string, gait_t> gaits_;
         std::string solver_name_;
         std::mutex solutions_mutex_;
-        std::map<std::string, msgroup::msg::GroupState> solutions_cache_;
+        std::map<std::string, msggroup::msg::GroupState> solutions_cache_;
 
         rclcpp::Subscription<std_msgs::msg::UInt8>::SharedPtr command_sub_;
-        rclcpp::Subscription<msgroup::msg::GroupState>::SharedPtr solutions_sub_;
+        rclcpp::Subscription<msggroup::msg::GroupState>::SharedPtr solutions_sub_;
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr joint_states_sub_;
         rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_states_pub_;
         rclcpp::executors::SingleThreadedExecutor::SharedPtr executor_;

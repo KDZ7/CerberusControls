@@ -60,6 +60,6 @@ csystem_controller:
     ki: 0.05
     kd: 0.05
     i_clamp: 1.0
-    dthreshold: 0.003
-    dcorrection: 0.5
+    dthreshold: 0.002
+    dcorrection: 0.7
     smoothing_factor : 0.5

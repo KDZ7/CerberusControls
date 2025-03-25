@@ -10,7 +10,7 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>log</depend>
   <depend>rclcpp</depend>
-  <depend>msgroup</depend>
+  <depend>msggroup</depend>
   <depend>yaml-cpp</depend>
 
 

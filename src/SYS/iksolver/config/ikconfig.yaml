@@ -10,14 +10,14 @@ groups:
       - ShFR_ThFR
     limits:
       SeFR_M:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
       ThFR_SeFR:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
       ShFR_ThFR:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
     lengths: 
       - 0.1762
       - 0.181
@@ -34,14 +34,14 @@ groups:
       - ShFL_ThFL
     limits:
       SeFL_M:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
       ThFL_SeFL:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
       ShFL_ThFL:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
     lengths: 
       - 0.1762
       - 0.181
@@ -58,14 +58,14 @@ groups:
       - ShBR_ThBR
     limits:
       SeBR_M:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
       ThBR_SeBR:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
       ShBR_ThBR:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
     lengths: 
       - 0.1563
       - 0.181
@@ -82,14 +82,14 @@ groups:
       - ShBL_ThBL
     limits:
       SeBL_M:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
       ThBL_SeBL:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
       ShBL_ThBL:
-        min: -0.785398163397
-        max: 0.785398163397
+        min: -0.7854
+        max: 0.7854
     lengths:
       - 0.1563
       - 0.181
@@ -97,8 +97,9 @@ groups:
       
 solvers:
   grid:
-    max_iter: 1000
-    delta: 1e-2
+    max_iter: 5000
+    delta: 1e-3
     radius: 5e-1
     enable_refinement: true
-    random_seed: -1 # (-1: time) | (n: predictable seed) 
+    max_refinement_iter: 10
+    random_seed: 1 # (-1: time) | (n: predictable seed)  

@@ -16,11 +16,11 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(mswaypoint REQUIRED)
+find_package(msgwaypoint REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
 add_executable(target src/target.cpp)
-ament_target_dependencies(target rclcpp mswaypoint geometry_msgs)
+ament_target_dependencies(target rclcpp msgwaypoint geometry_msgs)
 target_include_directories(target PRIVATE include)
 
 install(TARGETS

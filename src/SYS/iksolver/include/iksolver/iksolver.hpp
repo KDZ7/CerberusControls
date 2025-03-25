@@ -2,12 +2,14 @@
 #define __IKSOLVER__
 
 #include <memory>
+#include <string>
+#include <vector>
 #include <map>
 #include "log/log.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_lifecycle/lifecycle_node.hpp"
-#include "msgroup/msg/group_state.hpp"
-#include "mswaypoint/msg/waypoint.hpp"
+#include "msggroup/msg/group_state.hpp"
+#include "msgwaypoint/msg/waypoint.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "yaml-cpp/yaml.h"
 #include "kdl/chain.hpp"
@@ -37,6 +39,7 @@ namespace cerberus_iksolver
             double delta;
             double radius;
             bool enable_refinement;
+            int max_refinement_iter;
             int random_seed;
         } grid;
     };
@@ -56,7 +59,7 @@ namespace cerberus_iksolver
     private:
         bool loadConfig();
         bool loadModel();
-        void waypoint_callback(const mswaypoint::msg::Waypoint::SharedPtr msg);
+        void waypoint_callback(const msgwaypoint::msg::Waypoint::SharedPtr msg);
         void joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
         KDL::JntArray solveGRID(const group_t &group, const KDL::Vector &target);
 
@@ -66,9 +69,9 @@ namespace cerberus_iksolver
         solver_t solver_;
         std::map<std::string, KDL::JntArray> kdl_joint_states_;
 
-        rclcpp::Subscription<mswaypoint::msg::Waypoint>::SharedPtr waypoint_sub_;
+        rclcpp::Subscription<msgwaypoint::msg::Waypoint>::SharedPtr waypoint_sub_;
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr joint_states_sub_;
-        rclcpp::Publisher<msgroup::msg::GroupState>::SharedPtr solutions_pub_;
+        rclcpp::Publisher<msggroup::msg::GroupState>::SharedPtr solutions_pub_;
     };
 } // namespace cerberus_iksolver
 

@@ -13,6 +13,7 @@ namespace cerberus_iksolver
         solver_.grid.delta = 1e-3;
         solver_.grid.radius = 1e-2;
         solver_.grid.enable_refinement = true;
+        solver_.grid.max_refinement_iter = 100;
         solver_.grid.random_seed = -1;
 
         LOG_INFO("IKSolver created.");
@@ -45,9 +46,9 @@ namespace cerberus_iksolver
     {
         LOG_INFO("IKSolver activating ...");
 
-        waypoint_sub_ = this->create_subscription<mswaypoint::msg::Waypoint>("~/waypoint", rclcpp::QoS(10), std::bind(&IKSolver::waypoint_callback, this, std::placeholders::_1));
+        waypoint_sub_ = this->create_subscription<msgwaypoint::msg::Waypoint>("~/waypoint", rclcpp::QoS(10), std::bind(&IKSolver::waypoint_callback, this, std::placeholders::_1));
         joint_states_sub_ = this->create_subscription<sensor_msgs::msg::JointState>("~/joint_states", rclcpp::QoS(10), std::bind(&IKSolver::joint_state_callback, this, std::placeholders::_1));
-        solutions_pub_ = this->create_publisher<msgroup::msg::GroupState>("~/solutions", rclcpp::QoS(10));
+        solutions_pub_ = this->create_publisher<msggroup::msg::GroupState>("~/solutions", rclcpp::QoS(10));
 
         LOG_INFO("IKSolver activated successfully.");
         return CallbackReturn::SUCCESS;
@@ -132,6 +133,7 @@ namespace cerberus_iksolver
                     solver_.grid.delta = grid["delta"] ? grid["delta"].as<double>() : solver_.grid.delta;
                     solver_.grid.radius = grid["radius"] ? grid["radius"].as<double>() : solver_.grid.radius;
                     solver_.grid.enable_refinement = grid["enable_refinement"] ? grid["enable_refinement"].as<bool>() : solver_.grid.enable_refinement;
+                    solver_.grid.max_refinement_iter = grid["max_refinement_iter"] ? grid["max_refinement_iter"].as<int>() : solver_.grid.max_refinement_iter;
                     solver_.grid.random_seed = grid["random_seed"] ? grid["random_seed"].as<int>() : solver_.grid.random_seed;
                 }
             }
@@ -198,7 +200,7 @@ namespace cerberus_iksolver
         }
     }
 
-    void IKSolver::waypoint_callback(const mswaypoint::msg::Waypoint::SharedPtr msg)
+    void IKSolver::waypoint_callback(const msgwaypoint::msg::Waypoint::SharedPtr msg)
     {
         LOG_INFO("Waypoint received [ " << msg->group << " / " << msg->solver << " ] : (" << msg->x << ", " << msg->y << ", " << msg->z << ")");
         auto group = groups_.find(msg->group);
@@ -222,7 +224,7 @@ namespace cerberus_iksolver
             LOG_ERROR("IK Solver failed for [ " << msg->group << " / " << msg->solver << " ] : (" << msg->x << ", " << msg->y << ", " << msg->z << ")");
             return;
         }
-        msgroup::msg::GroupState group_state;
+        msggroup::msg::GroupState group_state;
         group_state.header = msg->header;
         group_state.group = msg->group;
         group_state.name = selected_group.joints;
@@ -270,23 +272,28 @@ namespace cerberus_iksolver
         double delta = solver_.grid.delta;
         double radius = solver_.grid.radius;
         const bool enable_refinement = solver_.grid.enable_refinement;
+        const int max_refinement_iter = solver_.grid.max_refinement_iter;
         const int dof = group.joints.size();
 
-        if (solver_.grid.random_seed == -1)
-            std::srand(std::time(nullptr));
-        else
-            std::srand(solver_.grid.random_seed);
+        std::srand(solver_.grid.random_seed == -1 ? std::time(nullptr) : solver_.grid.random_seed);
 
         KDL::JntArray current_q = kdl_joint_states_[group.name];
-        KDL::JntArray q = current_q;
+        KDL::JntArray best_q = current_q;
         KDL::JntArray min_limits(dof), max_limits(dof);
+
         for (int i = 0; i < dof; i++)
         {
             min_limits(i) = group.limits.at(group.joints[i]).at("min");
             max_limits(i) = group.limits.at(group.joints[i]).at("max");
         }
+
         double min_error = std::numeric_limits<double>::max();
-        for (int level = 0; level < (enable_refinement ? 2 : 1); level++)
+        int best_iter = -1;
+        bool success = false;
+
+        int refinement_steps = enable_refinement ? max_refinement_iter : 1;
+
+        for (int step = 0; step < refinement_steps; step++)
         {
             for (int iter = 0; iter < max_iter; iter++)
             {
@@ -297,26 +304,45 @@ namespace cerberus_iksolver
                     double value = current_q(i) + offset;
                     candidate_q(i) = std::max(min_limits(i), std::min(max_limits(i), value));
                 }
+
                 KDL::Frame candidate_frame;
                 group.fksolver->JntToCart(candidate_q, candidate_frame);
                 double error = (target - candidate_frame.p).Norm();
+
                 if (error < min_error)
                 {
                     min_error = error;
-                    q = candidate_q;
+                    best_q = candidate_q;
+                    best_iter = iter;
+                    if (error < delta)
+                    {
+                        success = true;
+                        break;
+                    }
                 }
             }
-            if (enable_refinement)
-            {
-                current_q = q;
-                delta /= 2.0;
-                radius /= 2.0;
-            }
+
+            if (success)
+                break;
+
+            current_q = best_q;
+            radius *= 0.5;
         }
+
         KDL::Frame solution_frame;
-        group.fksolver->JntToCart(q, solution_frame);
+        group.fksolver->JntToCart(best_q, solution_frame);
         double final_error = (target - solution_frame.p).Norm();
-        LOG_INFO("IKSolver GRID converged. Final error: " << final_error);
-        return q;
+
+        if (success)
+            LOG_INFO("GRID Satisfied | Iteration=" << best_iter
+                                                   << ", Error=" << final_error
+                                                   << ", Delta=" << delta);
+        else
+            LOG_INFO("GRID Max Iteration reached | Best Iteration=" << best_iter
+                                                                    << ", Error=" << final_error
+                                                                    << ", Delta=" << delta);
+
+        return best_q;
     }
+
 } // namespace cerberus_iksolver

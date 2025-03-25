@@ -17,11 +17,11 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(log REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(msgroup REQUIRED)
+find_package(msggroup REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
 add_executable(iksolver_bridge src/iksolver_bridge.cpp)
-ament_target_dependencies(iksolver_bridge log rclcpp msgroup yaml-cpp)
+ament_target_dependencies(iksolver_bridge log rclcpp msggroup yaml-cpp)
 
 target_link_libraries(iksolver_bridge ${YAML_CPP_LIBRARIES})
 

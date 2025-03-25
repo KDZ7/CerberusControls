@@ -19,9 +19,9 @@ find_package(log REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(msgroup REQUIRED)
+find_package(msggroup REQUIRED)
 find_package(sensor_msgs REQUIRED)
-find_package(mswaypoint REQUIRED)
+find_package(msgwaypoint REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
 add_executable(gmotion src/gmotion.cpp src/main.cpp)
@@ -30,9 +30,9 @@ ament_target_dependencies(gmotion
   rclcpp
   rclcpp_lifecycle
   std_msgs
-  msgroup
+  msggroup
   sensor_msgs
-  mswaypoint
+  msgwaypoint
   yaml-cpp
 )
 

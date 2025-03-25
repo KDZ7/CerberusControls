@@ -12,9 +12,9 @@
   <depend>rclcpp</depend>
   <depend>rclcpp_lifecycle</depend>
   <depend>std_msgs</depend>
-  <depend>msgroup</depend>
+  <depend>msggroup</depend>
   <depend>sensor_msgs</depend>
-  <depend>mswaypoint</depend>
+  <depend>msgwaypoint</depend>
   <depend>yaml-cpp</depend>
 
   <test_depend>ament_lint_auto</test_depend>
