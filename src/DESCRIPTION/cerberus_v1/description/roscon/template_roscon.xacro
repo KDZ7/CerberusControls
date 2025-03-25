@@ -17,7 +17,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ThFR_SeFR">
@@ -32,7 +32,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ArFR_ThFR">
@@ -47,7 +47,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ShFR_ThFR" mimic="${enable_mimic}">
@@ -64,7 +64,7 @@
                 </xacro:unless>
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
                 <param name="mimic">ArFR_ThFR</param>
                 <param name="multiplier">-0.2824</param>
                 <param name="offset">0</param>
@@ -83,7 +83,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ThFL_SeFL">
@@ -98,7 +98,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ArFL_ThFL">
@@ -113,7 +113,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ShFL_ThFL" mimic="${enable_mimic}">
@@ -130,7 +130,7 @@
                 </xacro:unless>
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
                 <param name="mimic">ArFL_ThFL</param>
                 <param name="multiplier">-0.2824</param>
                 <param name="offset">0</param>
@@ -149,7 +149,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ThBR_SeBR">
@@ -164,7 +164,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ArBR_ThBR">
@@ -179,7 +179,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ShBR_ThBR" mimic="${enable_mimic}">
@@ -196,7 +196,7 @@
                 </xacro:unless>
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
                 <param name="mimic">ArBR_ThBR</param>
                 <param name="multiplier">-0.2824</param>
                 <param name="offset">0</param>
@@ -215,7 +215,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ThBL_SeBL">
@@ -230,7 +230,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ArBL_ThBL">
@@ -245,7 +245,7 @@
                 </command_interface> -->
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
             </joint>
 
             <joint name="ShBL_ThBL" mimic="${enable_mimic}">
@@ -262,7 +262,7 @@
                 </xacro:unless>
                 <param name="initial_position">0.0</param>
                 <param name="max_velocity">5.8178</param>
-                <param name="max_effort">1.7</param>
+                <param name="max_effort">1.67</param>
                 <param name="mimic">ArBL_ThBL</param>
                 <param name="multiplier">-0.2824</param>
                 <param name="offset">0</param>

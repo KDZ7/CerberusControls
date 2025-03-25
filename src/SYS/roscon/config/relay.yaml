@@ -10,7 +10,7 @@ controller_manager:
   use: true
   setup_path: "[roscon]/setup/cmanager.yaml"
   use_sim_time: false
-  update_rate: 20 # Hz
+  update_rate: 10 # Hz
 
 rviz:
   config_path: "[roscon]/config/rviz.yaml"

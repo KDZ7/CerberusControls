@@ -21,6 +21,7 @@ namespace cerberus_gait
     {
         std::string leg;
         double x, y, z;
+        std::vector<double> joints;
         double wait;
     };
     struct sequence_t

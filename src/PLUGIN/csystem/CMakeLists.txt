@@ -5,7 +5,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-option(ENABLE_DEBUG "Enable debug log output" OFF)
+option(ENABLE_DEBUG "Enable debug log output" ON)
 if(ENABLE_DEBUG)
   add_compile_definitions(__DEBUG__)
 endif()
