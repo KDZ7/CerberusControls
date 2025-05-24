@@ -303,6 +303,7 @@ namespace hwsystem
 
         return hardware_interface::return_type::OK;
     }
+
     hardware_interface::return_type Hwsystem::write([[maybe_unused]] const rclcpp::Time &time, [[maybe_unused]] const rclcpp::Duration &period)
     {
         if (!servo_)
@@ -346,6 +347,7 @@ namespace hwsystem
 
         return hardware_interface::return_type::OK;
     }
+
     std::vector<hardware_interface::StateInterface::ConstSharedPtr> Hwsystem::on_export_state_interfaces()
     {
         std::vector<hardware_interface::StateInterface::ConstSharedPtr> state_interfaces;
@@ -375,6 +377,7 @@ namespace hwsystem
         LOG_INFO("Exported (" << command_interfaces.size() << ") command interfaces");
         return command_interfaces;
     }
+
 } // namespace hwsystem
 
 #include "pluginlib/class_list_macros.hpp"

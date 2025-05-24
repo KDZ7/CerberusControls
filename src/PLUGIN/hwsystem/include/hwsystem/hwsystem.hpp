@@ -1,6 +1,7 @@
 #ifndef __HWSYSTEM_HPP__
 #define __HWSYSTEM_HPP__
 
+#include "log/log.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "hardware_interface/system_interface.hpp"
 #include "hwsystem/visibility_control.h"
@@ -28,19 +29,21 @@ namespace hwsystem
     std::vector<hardware_interface::CommandInterface::SharedPtr> on_export_command_interfaces() override;
 
   private:
+    std::string config_file_path_;
+
+    std::map<std::string, uint8_t> joint_idmap_;
     std::map<std::string, double> joint_state_positions_;
     std::map<std::string, double> joint_command_positions_;
     std::map<std::string, double> joint_max_positions_;
     std::map<std::string, double> joint_min_positions_;
     std::map<std::string, double> home_positions_;
+
     double movetime_;
     bool real_state_enable_;
     double real_state_period_;
     double real_state_timeout_;
     double real_state_tolerance_;
 
-    std::string config_file_path_;
-    std::map<std::string, uint8_t> joint_idmap_;
     std::shared_ptr<idevice::Servo> servo_;
   };
 
